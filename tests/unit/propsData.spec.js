@@ -3,21 +3,22 @@ import LoginForm from "../../src/components/PropsData/LoginForm";
 
 
 describe("Props Data Testing", () => {
-    test("should render user form",() => {
-        const shallowWrapper = shallowMount(LoginForm, {
+    const factory = (options) => {
+        return mount(LoginForm, {
             propsData: {
-                isAdmin: false
+                ...options
             }
         })
+    }
+    test("should render user form",() => {
+        const params = {isAdmin: false}
+        const shallowWrapper = factory(params)
         expect(shallowWrapper.find("[data-test=\"user-form\"]").text())
             .toBe("User Form Design")
     })
     test("should render admin form",() => {
-        const shallowWrapper = shallowMount(LoginForm, {
-            propsData: {
-                isAdmin: true
-            }
-        })
+        const params = {isAdmin: true}
+        const shallowWrapper = factory(params)
         expect(shallowWrapper.find("[data-test=\"admin-form\"]").text())
             .toBe("Admin Form Design")
     })
