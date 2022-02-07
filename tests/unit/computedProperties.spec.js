@@ -9,7 +9,7 @@ describe("Computed Properties Testing", () => {
             }
         })
     }
-    test("should see warning form",() => {
+    test("should see warning message",() => {
         const params = {age: 17}
         const wrapper = factory(params)
         expect(wrapper.vm.checkAge).toBeTruthy()
